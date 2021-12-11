@@ -105,5 +105,37 @@ public class Compte {
 		else
 		System.out.println("non enregistrer");
 	}
+	
+	
+	public static void ModifierSolde(int num,int sol, String et) {
+		if(et=="N" || et=="F")
+			System.out.println("Ce compte est non attribue ou ferme");
+		else
+		{
+			int index = numero.indexOf(num);
+			solde.remove(solde.get(index));
+			solde.add(index, sol);
+			
+	}
+	}
+	
+	public static void ModifierEtat(int num,String et)
+	{
+		if(et=="A")
+			System.out.println("Ce compte est deja attribue");
+		else
+		{
+			et="A";
+		int index = numero.indexOf(num);
+		etat.remove(etat.get(index));
+		etat.add(index, et);
+	}
+	}
+	
+	
+	public static void AfficherCompte(int num)
+	{
+		
+	}
 	}
 	
