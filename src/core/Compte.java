@@ -97,45 +97,115 @@ public class Compte {
 		type.add(typ);
 		monnaie.add(mon);
 		etat.add(et);
-		
+
 		if(numero.contains(num) && solde.contains(sol) && type.contains(typ) && monnaie.contains(mon) && etat.contains(et)) {
 			System.out.println("Enregistrer avec succes");
-			
+
 		}
 		else
 		System.out.println("non enregistrer");
 	}
-	
-	
-	public static void ModifierSolde(int num,int sol, String et) {
-		if(et=="N" || et=="F")
+
+
+	public static void genererNumeroCompte(int num,String typ,String mon)
+	{
+		Random random=new Random();
+		int i=0,sol=0;
+		String et="N";
+		while(i<=99)
+		{
+			num=100000+random.nextInt(999999-100000);
+			while(numero.contains(num))
+				num=100000+random.nextInt(999999-100000);
+			Enregistrer(num,sol,typ,mon,et);
+			i++;
+		}
+	}
+	public static void genererCompte()
+	{
+		int num=100000;
+		String typ="Courant",mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+
+		typ="Epargne";
+		mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+
+		typ="A terme";
+		mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+
+		typ="Titre";
+		mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+
+
+		typ="Joint";
+		mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+
+		typ="Indivis";
+		mon="Dollars";
+		genererNumeroCompte(num,typ,mon);
+
+		mon="Gourdes";
+		genererNumeroCompte(num,typ,mon);
+	}
+	public static void ModifierSolde(int num,int sol) {
+		int index = numero.indexOf(num);
+		String et= etat.get(index);
+		if(et=="N" || et =="n" || et=="F" || et=="f")
 			System.out.println("Ce compte est non attribue ou ferme");
 		else
 		{
-			int index = numero.indexOf(num);
+
 			solde.remove(solde.get(index));
 			solde.add(index, sol);
-			
+
+		}
+
+		if(numero.contains(num) && solde.contains(sol)) {
+			System.out.println("Modifie avec succes");
+
+		}
+		else
+			System.out.println("non modifie");
 	}
-	}
-	
-	public static void ModifierEtat(int num,String et)
+
+	public static void ModifierEtat(int num)
 	{
+		int index = numero.indexOf(num);
+		String et= etat.get(index);
 		if(et=="A")
 			System.out.println("Ce compte est deja attribue");
 		else
 		{
 			et="A";
-		int index = numero.indexOf(num);
-		etat.remove(etat.get(index));
-		etat.add(index, et);
+			etat.remove(etat.get(index));
+			etat.add(index, et);
+		}
 	}
-	}
-	
-	
+
+
 	public static void AfficherCompte(int num)
 	{
-		
+
 	}
-	}
+
+}
 	
