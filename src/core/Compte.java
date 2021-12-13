@@ -187,17 +187,16 @@ public class Compte {
 			System.out.println("non modifie");
 	}
 
-	public static void ModifierEtat(int num)
+	public static void ModifierEtat(int num,String eta)
 	{
 		int index = numero.indexOf(num);
 		String et= etat.get(index);
-		if(et=="A")
-			System.out.println("Ce compte est deja attribue");
+		if(et==eta)
+			System.out.println("Ce compte est deja dans l'etat voulu");
 		else
 		{
-			et="A";
 			etat.remove(etat.get(index));
-			etat.add(index, et);
+			etat.add(index, eta);
 		}
 	}
 
