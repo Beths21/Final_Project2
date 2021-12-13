@@ -1,8 +1,9 @@
 package core;
 
+import java.util.*;
 public class Client {
-    private static ArrayList<String> typeCompte = new ArrayList<String>();
-    private static ArrayList<Integer> numeroCompte = new ArrayList<Integer>();
+    private static int noCompte;
+    private static String typeCompte;
     private static ArrayList<String> typeClient = new ArrayList<String>();
     private static ArrayList<String> nomComplet = new ArrayList<String>();
     private static ArrayList<Character> sexe = new ArrayList<Character>();
@@ -10,20 +11,21 @@ public class Client {
     private static ArrayList<String> tel = new ArrayList<String>();
     private static ArrayList<String> nifCin = new ArrayList<String>();
 
-    public static ArrayList<String> getTypeCompte() {
+
+    public static int getNoCompte() {
+        return noCompte;
+    }
+
+    public static void setNoCompte(int noCompte) {
+        Client.noCompte = noCompte;
+    }
+
+    public static String getTypeCompte() {
         return typeCompte;
     }
 
-    public static void setTypeCompte(ArrayList<String> typeCompte) {
+    public static void setTypeCompte(String typeCompte) {
         Client.typeCompte = typeCompte;
-    }
-
-    public static ArrayList<Integer> getNumeroCompte() {
-        return numeroCompte;
-    }
-
-    public static void setNumeroCompte(ArrayList<Integer> numeroCompte) {
-        Client.numeroCompte = numeroCompte;
     }
 
     public static ArrayList<String> getTypeClient() {
@@ -75,12 +77,12 @@ public class Client {
     }
 
 
-    public Client(String nifCin,int numeroCompte,String typeCompte,String typeClient, String nomComplet,
+    public Client(String nifCin,int noCompte,String typeCompte,String typeClient, String nomComplet,
                   char sexe,String adresse,String tel)
     {
+        this.noCompte=noCompte;
+        this.typeCompte=typeCompte;
         this.nifCin.add(nifCin);
-        this.numeroCompte.add(numeroCompte);
-        this.typeCompte.add(typeCompte);
         this.typeClient.add(typeClient);
         this.nomComplet.add(nomComplet);
         this.sexe.add(sexe);
@@ -88,8 +90,31 @@ public class Client {
         this.tel.add(tel);
     }
 
-    public static void enregistrer()
+    public static void enregistrer(String nifCin,int noCompte,String typeCompte,String typeClient, String nomComplet,
+                                   char sexe,String adresse,String tel,String monnaie)
     {
+        int index=0,noCompt=0;
+        for(int i=0;i<Compte.getType().size();i++)
+        {
+            for(int j=0;j<Compte.getMonnaie().size();j++)
+            {
+                while (Compte.getType().get(i) == typeCompte && Compte.getMonnaie().get(j)==monnaie)
+                {
+                    index = Compte.getType().indexOf(Compte.getType().get(i));
+                    if(Compte.getEtat().get(index) == "N" )
+                    {
+                        noCompt = Compte.getNumero().get(index);
+                        Compte.getEtat().remove(Compte.getEtat().get(index));
+                        Compte.getEtat().add(index, "A");
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        Client client=new Client(nifCin,noCompt,typeCompte,typeClient,nomComplet,sexe,adresse,tel);
+
 
     }
 
