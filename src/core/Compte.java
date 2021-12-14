@@ -17,7 +17,7 @@ public class Compte {
 
 
 
-	public ArrayList<Integer> getNumero() {
+	public static ArrayList<Integer> getNumero() {
 		return numero;
 	}
 
@@ -31,7 +31,7 @@ public class Compte {
 
 
 
-	public ArrayList<String> getType() {
+	public static ArrayList<String> getType() {
 		return type;
 	}
 
@@ -44,7 +44,7 @@ public class Compte {
 
 
 
-	public ArrayList<String> getMonnaie() {
+	public static ArrayList<String> getMonnaie() {
 		return monnaie;
 	}
 
@@ -56,7 +56,7 @@ public class Compte {
 
 
 
-	public ArrayList<Integer> getSolde() {
+	public static ArrayList<Integer> getSolde() {
 		return solde;
 	}
 
@@ -67,7 +67,7 @@ public class Compte {
 	}
 
 
-	public ArrayList<String> getEtat() {
+	public static ArrayList<String> getEtat() {
 		return etat;
 	}
 
@@ -81,7 +81,7 @@ public class Compte {
 
 
 	public Compte(ArrayList<Integer> numero, ArrayList<String> type, ArrayList<String> monnaie,
-			ArrayList<Integer> solde, ArrayList<String> etat) {
+				  ArrayList<Integer> solde, ArrayList<String> etat) {
 		super();
 		this.numero = numero;
 		this.type = type;
@@ -103,7 +103,7 @@ public class Compte {
 
 		}
 		else
-		System.out.println("non enregistrer");
+			System.out.println("non enregistrer");
 	}
 
 
@@ -169,7 +169,7 @@ public class Compte {
 	public static void ModifierSolde(int num,int sol) {
 		int index = numero.indexOf(num);
 		String et= etat.get(index);
-		if(et=="N" || et =="n" || et=="F" || et=="f")
+		if(et=="N" || et=="F")
 			System.out.println("Ce compte est non attribue ou ferme");
 		else
 		{
@@ -205,6 +205,5 @@ public class Compte {
 	{
 
 	}
-
 }
 	

@@ -50,17 +50,29 @@ public class Transaction {
         this.date.add(dat);
     }
 
-    public static void enregistrerDepot(int id_Transac,int noCompte,
-                                        int mont,String client,String dat)
+    public static void enregistrerDepot(int mont)
     {
+
         Random random=new Random();
-        id_Transac=100+random.nextInt(999999-100);
+        int id_Transac=100+random.nextInt(999999-100);
 
+        int noCompte=Client.getNoCompte();
+        int index=Compte.getNumero().indexOf(noCompte);
 
-        id_Transaction.add(id_Transac);
-        montant.add(mont);
-        nomClient.add(client);
-        date.add(dat);
+        if(Compte.getEtat().get(index) == "N" || Compte.getEtat().get(index) == "F")
+            System.out.println("Ce compte n'est pas attribue ou est ferme");
+        else if(Compte.getEtat().get(index) == "A")
+        {
+            int value=Compte.getSolde().get(index);
+            Compte.getSolde().remove(Compte.getSolde().get(index));
+            Compte.getSolde().add(index,value+mont);
+            if(Compte.getSolde().subList(index,index+1).contains(value+mont))
+                System.out.println("Depot realise");
+            else
+                System.out.println("Depot non realise");
+
+        }
+
 
     }
 

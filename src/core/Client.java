@@ -90,30 +90,27 @@ public class Client {
         this.tel.add(tel);
     }
 
-    public static void enregistrer(String nifCin,int noCompte,String typeCompte,String typeClient, String nomComplet,
+    public static void enregistrer(String nifCin,String typeCompte,String typeClient, String nomComplet,
                                    char sexe,String adresse,String tel,String monnaie)
     {
         int index=0,noCompt=0;
-        for(int i=0;i<Compte.getType().size();i++)
+        for(int i=0 ;i<Compte.getType().size() && i < Compte.getMonnaie().size();i++)
         {
-            for(int j=0;j<Compte.getMonnaie().size();j++)
+            while (Compte.getType().get(i) == typeCompte && Compte.getMonnaie().get(i)==monnaie)
             {
-                while (Compte.getType().get(i) == typeCompte && Compte.getMonnaie().get(j)==monnaie)
+                index = Compte.getType().indexOf(Compte.getType().get(i));
+                if (Compte.getEtat().get(index) == "N")
                 {
-                    index = Compte.getType().indexOf(Compte.getType().get(i));
-                    if(Compte.getEtat().get(index) == "N" )
-                    {
-                        noCompt = Compte.getNumero().get(index);
-                        Compte.getEtat().remove(Compte.getEtat().get(index));
-                        Compte.getEtat().add(index, "A");
-                        break;
-                    }
+                    noCompt = Compte.getNumero().get(index);
+                    Compte.ModifierEtat(noCompt, "A");
+                    break;
                 }
+                break;
             }
 
         }
 
-        Client client=new Client(nifCin,noCompt,typeCompte,typeClient,nomComplet,sexe,adresse,tel);
+        new Client(nifCin,noCompt,typeCompte,typeClient,nomComplet,sexe,adresse,tel);
 
 
     }
