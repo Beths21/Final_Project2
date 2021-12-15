@@ -203,6 +203,10 @@ public class Compte {
 
 	public static void AfficherCompte(int num)
 	{
+		for(int i=0; i<numero.get(i);i++) {
+			System.out.println("numero=" + numero.get(i)+ ", type="+ type.get(i)+ ",monnaie="+ monnaie.get(i)+ ", solde="+ solde.get(i)+ ",etat="+ etat.get(i))
+		}
+		}
 
 	}
 }
