@@ -2,8 +2,8 @@ package core;
 
 import java.util.*;
 public class Client {
-    private static int noCompte;
-    private static String typeCompte;
+    private static ArrayList<Integer> noCompte = new ArrayList<Integer>();
+    private static ArrayList<String> typeCompte = new ArrayList<String>();
     private static ArrayList<String> typeClient = new ArrayList<String>();
     private static ArrayList<String> nomComplet = new ArrayList<String>();
     private static ArrayList<Character> sexe = new ArrayList<Character>();
@@ -11,20 +11,19 @@ public class Client {
     private static ArrayList<String> tel = new ArrayList<String>();
     private static ArrayList<String> nifCin = new ArrayList<String>();
 
-
-    public static int getNoCompte() {
+    public static ArrayList<Integer> getNoCompte() {
         return noCompte;
     }
 
-    public static void setNoCompte(int noCompte) {
+    public static void setNoCompte(ArrayList<Integer> noCompte) {
         Client.noCompte = noCompte;
     }
 
-    public static String getTypeCompte() {
+    public static ArrayList<String> getTypeCompte() {
         return typeCompte;
     }
 
-    public static void setTypeCompte(String typeCompte) {
+    public static void setTypeCompte(ArrayList<String> typeCompte) {
         Client.typeCompte = typeCompte;
     }
 
@@ -80,8 +79,8 @@ public class Client {
     public Client(String nifCin,int noCompte,String typeCompte,String typeClient, String nomComplet,
                   char sexe,String adresse,String tel)
     {
-        this.noCompte=noCompte;
-        this.typeCompte=typeCompte;
+        this.noCompte.add(noCompte);
+        this.typeCompte.add(typeCompte);
         this.nifCin.add(nifCin);
         this.typeClient.add(typeClient);
         this.nomComplet.add(nomComplet);
@@ -107,11 +106,9 @@ public class Client {
                 }
                 break;
             }
-
         }
 
         new Client(nifCin,noCompt,typeCompte,typeClient,nomComplet,sexe,adresse,tel);
-
 
     }
 

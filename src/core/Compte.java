@@ -181,5 +181,15 @@ public class Compte {
 					+ monnaie.get(i)+ " \nSolde : "+ solde.get(i)+ " \nEtat : "+ etat.get(i)+ " \n");
 		}
 	}
+
+	public static void afficherComptePrecis(int numeroCompte)
+	{
+		int index=numero.indexOf(numeroCompte);
+		System.out.println("---------------------------------------------------");
+		System.out.println("Numero de compte : " + numero.get(index)+ " \nType de compte : "+ type.get(index)+ " \nMonnaie : "
+				+ monnaie.get(index)+ " \nSolde : "+ solde.get(index)+ " \nEtat : "+ etat.get(index)+ " \n");
+		System.out.println("---------------------------------------------------");
+
+	}
 }
 	
