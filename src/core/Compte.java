@@ -123,49 +123,21 @@ public class Compte {
 	}
 	public static void genererCompte()
 	{
-		int num=100000;
-		String typ="Courant",mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
+		int num = 100000;
+		String typ = "Courant", mon = "Dollars";
+		genererNumeroCompte(num, typ, mon);
 
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
+		mon = "Gourdes";
+		genererNumeroCompte(num, typ, mon);
 
-		typ="Epargne";
-		mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
+		typ = "Epargne";
+		mon = "Dollars";
+		genererNumeroCompte(num, typ, mon);
 
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
-
-		typ="A terme";
-		mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
-
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
-
-		typ="Titre";
-		mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
-
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
-
-
-		typ="Joint";
-		mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
-
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
-
-		typ="Indivis";
-		mon="Dollars";
-		genererNumeroCompte(num,typ,mon);
-
-		mon="Gourdes";
-		genererNumeroCompte(num,typ,mon);
+		mon = "Gourdes";
+		genererNumeroCompte(num, typ, mon);
 	}
+
 	public static void ModifierSolde(int num,int sol) {
 		int index = numero.indexOf(num);
 		String et= etat.get(index);
@@ -201,13 +173,13 @@ public class Compte {
 	}
 
 
-	public static void AfficherCompte(int num)
+	public static void AfficherCompte()
 	{
-		for(int i=0; i<numero.get(i);i++) {
-			System.out.println("numero=" + numero.get(i)+ ", type="+ type.get(i)+ ",monnaie="+ monnaie.get(i)+ ", solde="+ solde.get(i)+ ",etat="+ etat.get(i))
+		for(int i=1; i<numero.size();i++) {
+			System.out.println("---------------------------------------------------");
+			System.out.println("Numero de compte : " + numero.get(i)+ " \nType de compte : "+ type.get(i)+ " \nMonnaie : "
+					+ monnaie.get(i)+ " \nSolde : "+ solde.get(i)+ " \nEtat : "+ etat.get(i)+ " \n");
 		}
-		}
-
 	}
 }
 	
