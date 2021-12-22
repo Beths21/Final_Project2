@@ -112,14 +112,24 @@ public class Client {
 
     }
 
-    public static void modifier()
+    public static void modifier(String nif, String telephone, String Nomcomplet, String Adress)
     {
-
+    	int index=0;
+    	index = nifCin.indexOf(nif);
+    	tel.remove(get(index));
+    	tel.add(index, telephone);
+    	
+    	nomComplet.remove(get(index));
+    	nomComplet.add(index, Nomcomplet);
+    	
+    	adresse.remove(get(index));
+    	adresse.add(index, Adress);
+    			
     }
 
     public static void afficher()
     {
-
+    	
     }
 
     public static void supprimer()
