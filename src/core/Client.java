@@ -127,25 +127,46 @@ public class Client {
     			
     }
 
-    public static void afficher()
-    {
-    	
-    }
-
-    public static void supprimer()
-    {
-public CtrlSupprimerClient(PanelAgence pan, Model mode)
-	{
-		this.Pan = pan;
-		this.model = mode;
+ public static ArrayList<Client> getAllClient(){
+		ArrayList<Client> listClient = new ArrayList<Client>();
+		
+		try{
+			connect= Connexion.getConnection();
+			String req = "select * from client";
+			Statement s= connect.createStatement();
+			ResultSet resultats=s.executeQuery(req);
+			
+			while(resultats.next()){
+				Client c= new Client();
+				c.setNom(resultats.getString(2));
+				c.setPrenom(resultats.getString(3));
+				c.setAdresse(resultats.getString(4));
+				c.setNif(resultats.getLong(1));
+				c.setTelephone(resultats.getString(5));
+				c.setCodeSecret(resultats.getInt(6));
+				c.setCompte(Compte.consulterCompte(resultats.getInt(7)));
+				listClient.add(c);
+			}
+			connect.close();
+		}catch(SQLException e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
+		return listClient;
+		
 	}
-
-	public void actionPerformed(ActionEvent arg0) 
-	{
-		Client cli = model.getClient(Pan.getclient());
-		model.SupprimerClient(cli);
-		Pan.setClients(model.getAgence(Pan.getnumAgneceSelect()).getNomPnomClients());
-	}
-
+	
+	public static void supprimerClient(Client cl){
+		try{
+			connect=Connexion.getConnection();
+			String req = "delete from Client where Nif = ?";
+			PreparedStatement sta=connect.prepareStatement(req);
+			sta.setLong(1,cl.getNif());
+			sta.execute();
+			connect.close();
+		}catch(SQLException e){
+			System.out.println(e.getMessage());
+		}
     }
 }
