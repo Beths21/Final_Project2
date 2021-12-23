@@ -134,6 +134,18 @@ public class Client {
 
     public static void supprimer()
     {
+public CtrlSupprimerClient(PanelAgence pan, Model mode)
+	{
+		this.Pan = pan;
+		this.model = mode;
+	}
+
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		Client cli = model.getClient(Pan.getclient());
+		model.SupprimerClient(cli);
+		Pan.setClients(model.getAgence(Pan.getnumAgneceSelect()).getNomPnomClients());
+	}
 
     }
 }
